@@ -17,8 +17,8 @@ function rowcount()
 
 function onformsubmit()
 {
-        var validate=document.getElementById("name").value;
-        if(validate!="")
+       // var validate=document.getElementById("name").value;
+        if(document.getElementById("name").value!=""&&document.getElementById("username").value!=""&&document.getElementById("email").value!=""&&document.getElementById("phone").value!="")
         {
         var formdata=getdata();
         if(selectedRow==null)
@@ -27,9 +27,10 @@ function onformsubmit()
         updateRecord(formdata);
         rowcount();
         resetdata();
+        rowcount1();
         }
         else
-        alert("Name Required!");
+        alert("Insufficient Data!");
 }
 function getdata()
 {
@@ -98,6 +99,7 @@ function onDelete(td) {
 }
 
 function fetchData(){
+        
         fetch("https://jsonplaceholder.typicode.com/users")
         .then(res => {res.json()
         .then(data =>{console.log(data);
